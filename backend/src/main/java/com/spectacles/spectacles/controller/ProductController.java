@@ -7,22 +7,32 @@ import com.spectacles.spectacles.service.ProductService;
 
 @RestController
 @RequestMapping("/products")
-@CrossOrigin
+@CrossOrigin(origins = "*")
 public class ProductController {
 
-    private final ProductService service;
+    private final ProductService productService;
 
-    public ProductController(ProductService service) {
-        this.service = service;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
     @GetMapping
-    public List<Product> getAll() {
-        return service.getAll();
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
     }
 
     @PostMapping
-    public Product add(@RequestBody Product p) {
-        return service.save(p);
+    public Product addProduct(@RequestBody Product product) {
+        return productService.addProduct(product);
+    }
+
+    @GetMapping("/{id}")
+    public Product getProduct(@PathVariable Long id) {
+        return productService.getProductById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
+        productService.deleteProduct(id);
     }
 }

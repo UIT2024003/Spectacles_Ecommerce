@@ -8,17 +8,25 @@ import com.spectacles.spectacles.repository.ProductRepository;
 @Service
 public class ProductService {
 
-    private final ProductRepository repo;
+    private final ProductRepository productRepository;
 
-    public ProductService(ProductRepository repo) {
-        this.repo = repo;
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
 
-    public List<Product> getAll() {
-        return repo.findAll();
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
     }
 
-    public Product save(Product p) {
-        return repo.save(p);
+    public Product addProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
     }
 }
