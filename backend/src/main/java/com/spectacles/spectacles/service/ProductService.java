@@ -1,32 +1,53 @@
 package com.spectacles.spectacles.service;
 
 import java.util.List;
+
 import org.springframework.stereotype.Service;
+
 import com.spectacles.spectacles.model.Product;
 import com.spectacles.spectacles.repository.ProductRepository;
 
 @Service
 public class ProductService {
 
-    private final ProductRepository productRepository;
+    private final ProductRepository repo;
 
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductService(ProductRepository repo) {
+        this.repo = repo;
     }
 
+    // ✅ GET ALL
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
+        return repo.findAll();
     }
 
+    // ✅ ADD
     public Product addProduct(Product product) {
-        return productRepository.save(product);
+        return repo.save(product);
     }
 
+    // ✅ GET BY ID
     public Product getProductById(Long id) {
-        return productRepository.findById(id).orElse(null);
+        return repo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
+    // ✅ UPDATE
+    public Product updateProduct(Long id, Product updatedProduct) {
+        Product existing = getProductById(id);
+
+        existing.setName(updatedProduct.getName());
+        existing.setBrand(updatedProduct.getBrand());
+        existing.setPrice(updatedProduct.getPrice());
+        existing.setCategory(updatedProduct.getCategory());
+        existing.setImageUrl(updatedProduct.getImageUrl());
+        existing.setDescription(updatedProduct.getDescription());
+        existing.setStock(updatedProduct.getStock());
+
+        return repo.save(existing);
+    }
+
+    // ✅ DELETE
     public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+        repo.deleteById(id);
     }
 }

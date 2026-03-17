@@ -3,6 +3,7 @@ package com.spectacles.spectacles.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "product") // 🔥 IMPORTANT (lowercase)
 public class Product {
 
     @Id
@@ -13,7 +14,10 @@ public class Product {
     private String brand;
     private double price;
     private String category;
+
+    @Column(name = "image_url")
     private String imageUrl;
+
     private String description;
     private int stock;
 
