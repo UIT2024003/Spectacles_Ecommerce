@@ -1,0 +1,115 @@
+/* Reset (scoped only to this page) */
+.add-product-page * {
+  box-sizing: border-box;
+}
+
+/* Page Background */
+.add-product-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #354383, #db64df);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  padding: 20px;
+}
+
+/* Card (Glass Effect) */
+.add-product-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  color: #000;
+}
+
+/* Heading */
+.add-product-card h2 {
+  text-align: center;
+  margin-bottom: 5px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+/* Inputs */
+.add-product-card input {
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+
+  background: rgba(255, 255, 255, 0.4);
+
+  color: #000;   /* input text black */
+
+  transition: 0.3s ease;
+}
+
+/* Placeholder */
+.add-product-card input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Focus */
+.add-product-card input:focus {
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Button */
+.add-product-card button {
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 10px;
+  border: none;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #b828ae, #9673d6);
+  color: #0e0d0d;
+
+  transition: 0.3s ease;
+}
+
+/* Hover */
+.add-product-card button:hover {
+  background: #7512a3;
+  color: #ffffff;
+
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Click */
+.add-product-card button:active {
+  transform: scale(0.98);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .add-product-card {
+    padding: 20px;
+    border-radius: 14px;
+  }
+}

@@ -40,18 +40,20 @@ export default function AddProduct() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Add Spectacles 👓</h2>
+    <div className="add-product-page">
+      <div className="add-product-card">
+        <h2>Add Spectacles </h2>
 
-      <input name="name" placeholder="Name" onChange={handleChange} /><br/>
-      <input name="brand" placeholder="Brand" onChange={handleChange} /><br/>
-      <input name="price" placeholder="Price" onChange={handleChange} /><br/>
-      <input name="category" placeholder="Category" onChange={handleChange} /><br/>
-      <input name="imageUrl" placeholder="Image URL" onChange={handleChange} /><br/>
-      <input name="description" placeholder="Description" onChange={handleChange} /><br/>
-      <input name="stock" placeholder="Stock" onChange={handleChange} /><br/>
+        <input name="name" placeholder="Name" onChange={handleChange} />
+        <input name="brand" placeholder="Brand" onChange={handleChange} />
+        <input name="price" placeholder="Price" onChange={handleChange} />
+        <input name="category" placeholder="Category" onChange={handleChange} />
+        <input name="imageUrl" placeholder="Image URL" onChange={handleChange} />
+        <input name="description" placeholder="Description" onChange={handleChange} />
+        <input name="stock" placeholder="Stock" onChange={handleChange} />
 
-      <button onClick={handleSubmit}>Add Product</button>
+        <button onClick={handleSubmit}>Add Product</button>
+      </div>
     </div>
   );
 }

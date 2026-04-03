@@ -42,23 +42,28 @@ export default function Login() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="login-page">
+       <div className="login-wrapper">
+    <div className="login-container">
       <h2>Login 🔐</h2>
 
       <input
         name="username"
         placeholder="Username"
         onChange={handleChange}
-      /><br/><br/>
+      />
 
       <input
         type="password"
         name="password"
         placeholder="Password"
         onChange={handleChange}
-      /><br/><br/>
+      />
 
       <button onClick={handleLogin}>Login</button>
     </div>
-  );
+  </div>
+    </div>
+ 
+);
 }

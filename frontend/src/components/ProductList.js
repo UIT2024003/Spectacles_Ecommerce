@@ -35,39 +35,45 @@ export default function ProductList() {
   }, []);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Products 👓</h2>
+  <div style={{ padding: "20px" }}>
+    <h2>Products 👓</h2>
 
-      <button onClick={() => navigate("/cart")}>
-        Go to Cart 🛒
-      </button>
+    <button onClick={() => navigate("/cart")}>
+      Go to Cart 🛒
+    </button>
 
-      <br/><br/>
+    <br /><br />
 
-      {products.length === 0 ? (
-        <p>No products found ❌</p>
-      ) : (
-        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-          {products.map((p) => (
-            <div key={p.id} style={{
-              border: "1px solid gray",
-              padding: "10px",
-              width: "200px"
-            }}>
-              <img 
-                src={p.imageUrl} 
-                alt="" 
-                width="100%"
-                onError={(e) => e.target.src = "https://via.placeholder.com/150"}
+    {products.length === 0 ? (
+      <p>No products found ❌</p>
+    ) : (
+      <div className="product-container">
+        {products.map((p) => (
+          <div key={p.id} className="product-card">
+
+            {/* 👇 Wrap content */}
+            <div>
+              <img
+                src={p.imageUrl}
+                alt=""
+                onError={(e) =>
+                  (e.target.src = "https://via.placeholder.com/150")
+                }
               />
               <h3>{p.name}</h3>
               <p>{p.brand}</p>
               <p>₹{p.price}</p>
-              <button onClick={() => addToCart(p)}>Add to Cart</button>
             </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+
+            {/* 👇 Button stays at bottom */}
+            <button onClick={() => addToCart(p)}>
+              Add to Cart
+            </button>
+
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+);
 }
