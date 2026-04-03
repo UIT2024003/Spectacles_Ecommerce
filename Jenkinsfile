@@ -14,18 +14,10 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build and Test') {
             steps {
                 dir('backend') {
-                    sh 'mvn clean compile'
-                }
-            }
-        }
-
-        stage('Test') {
-            steps {
-                dir('backend') {
-                    sh 'mvn test'
+                    sh 'mvn clean test'
                 }
             }
         }
