@@ -1,0 +1,18 @@
+# Root ignores
+.DS_Store
+Thumbs.db
+*.log
+.env
+.vscode/
+.idea/
+*.iml
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/coverage/
+
+# Backend
+backend/target/
+backend/.env
+backend/.env.*
