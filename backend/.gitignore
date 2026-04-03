@@ -1,3 +1,26 @@
+# Maven build output
 target/
-node_modules/
+
+# Environment files
 .env
+.env.*
+
+# Node stuff (only if any tooling ever adds it)
+node_modules/
+
+# IDE / editor
+.idea/
+*.iml
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Spring Boot / temp
+*.tmp
+*.swp
