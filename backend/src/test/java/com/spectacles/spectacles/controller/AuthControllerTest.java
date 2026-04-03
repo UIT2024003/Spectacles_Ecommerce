@@ -63,4 +63,19 @@ public class AuthControllerTest {
                 .content(objectMapper.writeValueAsString(user)))
                 .andExpect(status().isOk());
     }
+    
+    @Test
+void testLoginFails() throws Exception {
+
+    User user = new User();
+    user.setUsername("admin");
+    user.setPassword("wrong");
+
+    when(service.login("admin", "wrong")).thenReturn(null);
+
+    mockMvc.perform(post("/auth/login")
+            .contentType("application/json")
+            .content(objectMapper.writeValueAsString(user)))
+            .andExpect(status().isUnauthorized());
+}
 }
