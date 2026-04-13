@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import './AddProduct.css';
+import "./AddProduct.css";
 
 export default function AddProduct() {
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -19,19 +18,32 @@ export default function AddProduct() {
     category: "",
     imageUrl: "",
     description: "",
-    stock: ""
+    stock: "",
   });
+
+  const [file, setFile] = useState(null);
 
   const handleChange = (e) => {
     setProduct({
       ...product,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = async () => {
     try {
-      await axios.post("http://localhost:8080/products", product);
+      const formData = new FormData();
+
+      formData.append("file", file);
+      formData.append("name", product.name);
+      formData.append("brand", product.brand);
+      formData.append("price", product.price);
+      formData.append("category", product.category);
+      formData.append("description", product.description);
+      formData.append("stock", product.stock);
+
+      await axios.post("http://localhost:8080/products/upload", formData);
+
       alert("✅ Product Added");
     } catch (err) {
       console.error(err);
@@ -48,8 +60,12 @@ export default function AddProduct() {
         <input name="brand" placeholder="Brand" onChange={handleChange} />
         <input name="price" placeholder="Price" onChange={handleChange} />
         <input name="category" placeholder="Category" onChange={handleChange} />
-        <input name="imageUrl" placeholder="Image URL" onChange={handleChange} />
-        <input name="description" placeholder="Description" onChange={handleChange} />
+        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <input
+          name="description"
+          placeholder="Description"
+          onChange={handleChange}
+        />
         <input name="stock" placeholder="Stock" onChange={handleChange} />
 
         <button onClick={handleSubmit}>Add Product</button>
