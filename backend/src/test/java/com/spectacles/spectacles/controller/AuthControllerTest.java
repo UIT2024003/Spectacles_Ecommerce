@@ -2,6 +2,7 @@ package com.spectacles.spectacles.controller;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -62,5 +63,22 @@ public class AuthControllerTest {
                 .contentType("application/json")
                 .content(objectMapper.writeValueAsString(user)))
                 .andExpect(status().isOk());
+    }
+
+    // ✅ REGISTER SUCCESS
+    @Test
+    void testRegisterSuccess() throws Exception {
+
+        User user = new User();
+        user.setUsername("newuser");
+        user.setPassword("1234");
+
+        when(service.register(any(User.class))).thenReturn(user);
+
+        mockMvc.perform(post("/auth/register")
+                .contentType("application/json")
+                .content(objectMapper.writeValueAsString(user)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.username").value("newuser"));
     }
 }

@@ -34,6 +34,14 @@ public class UserService {
 
     // 📝 REGISTER METHOD
     public User register(User user) {
+
+    // check if username already exists
+        User existing = repo.findByUsername(user.getUsername());
+
+        if (existing != null) {
+            return null; // username already taken
+        }
+
         return repo.save(user);
     }
 }

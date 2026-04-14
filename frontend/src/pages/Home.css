@@ -40,40 +40,84 @@
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
-.main-text:hover{
+.main-text {
+  display: inline-block;  
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.main-text:hover {
   transform: scale(1.05);
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-
 }
 
 /* Login */
-.login-container {
+.login-dropdown {
   position: relative;
+  display: inline-block;
 }
 
+/* Login button (smaller & cleaner) */
 .login-btn {
+  /*background: linear-gradient(135deg, #667eea, #7f5af0);
+  border: none;*/
   background: rgba(255, 255, 255, 0.2);
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;  
+  border-radius: 15px;
+  /*color: #000;*/
   color: white;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 14px;
 }
 
+
+/* Auth container (side by side) */
+.auth-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Register button */
+.register-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.login-btn,
+.register-btn {
+  height: 32px;
+}
+
+/* Hover effects */
 .login-btn:hover {
-  background: rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #4b1f6f, #561b99);
+  color: white;
+}
+
+.register-btn:hover {
+  /*background: rgba(255, 255, 255, 0.35);*/
+  background: linear-gradient(135deg, #4b1f6f, #561b99);
 }
 
 /* Dropdown */
-.dropdown {
+/*.dropdown {
   position: absolute;
-  top: 40px;
+  top: 100%;
   right: 0;
+  margin-top: 5px;
   background: white;
   color: black;
   border-radius: 10px;
-  width: 160px;
+  width: 130px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
   overflow: hidden;
 }
@@ -87,6 +131,7 @@
 .dropdown p:hover {
   background: #eee;
 }
+*/
 
 /* Hero */
 .hero {
@@ -155,8 +200,6 @@
   margin-bottom: 15px;
 }
 
-
-
 /* Footer */
 .footer {
   text-align: center;
@@ -164,4 +207,26 @@
   background: rgba(0,0,0,0.2);
 
   margin-top: auto; /* 👈 KEY FIX */
+}
+
+/* Welcome text */
+.welcome-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+}
+
+/* Logout button */
+.logout-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
 }

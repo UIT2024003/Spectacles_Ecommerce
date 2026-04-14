@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import './Login.css';
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
 
@@ -41,8 +42,21 @@ export default function Login() {
     }
   };
 
+  const navigate = useNavigate();
+
   return (
+    
     <div className="login-page">
+
+      <div className="top-bar">
+        <button 
+          className="home-btn"
+          onClick={() => navigate("/")}
+        >
+          Home
+        </button>
+      </div>
+
        <div className="login-wrapper">
     <div className="login-container">
       <h2>Login 🔐</h2>
@@ -61,6 +75,13 @@ export default function Login() {
       />
 
       <button onClick={handleLogin}>Login</button>
+
+      <p className="auth-link">
+        Don't have an account?{" "}
+        <span onClick={() => navigate("/register")}>
+          Register
+        </span>
+      </p>
     </div>
   </div>
     </div>

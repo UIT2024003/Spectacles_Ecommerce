@@ -101,3 +101,70 @@
 .login-container button:active {
   transform: scale(0.97);
 }
+
+.login-container select {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  font-size: 14px;
+
+  background: rgba(255, 255, 255, 0.25);
+  color: #000;
+
+  transition: 0.3s ease;
+}
+
+.auth-link {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.auth-link span {
+  color: #5a4bff;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: 0.2s;
+}
+
+.auth-link span:hover {
+  color: #372cff;
+  text-decoration: none;
+}
+
+.top-bar {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+}
+
+.top-bar span {
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.top-bar span:hover {
+  text-decoration: underline;
+  color: #ddd;
+}
+
+.home-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 15px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+/* Hover effect (same as register) */
+.home-btn:hover {
+  background: linear-gradient(135deg, #4b1f6f, #561b99);
+  color: white;
+}

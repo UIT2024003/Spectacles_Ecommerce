@@ -1,14 +1,38 @@
 import './Home.css';
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+//import { useState } from "react";
 import design from '../images/design.png';
 import price from '../images/price.png';
 import durable from '../images/durable.png';
 import delivery from '../images/delivery.png';
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const navigate = useNavigate();
-  const [showDropdown, setShowDropdown] = useState(false);
+  //const [showDropdown, setShowDropdown] = useState(false);
+
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+  const updateUser = () => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    setUser(storedUser);
+  };
+
+  updateUser();
+
+  window.addEventListener("storage", updateUser);
+
+  return () => {
+    window.removeEventListener("storage", updateUser);
+  };
+}, []);
+  //const user = JSON.parse(localStorage.getItem("user"));
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);  
+    navigate("/");
+  };
 
   return (
     <div className="home">
@@ -16,23 +40,83 @@ export default function Home() {
       {/* Navbar */}
       <div className="navbar">
        <h2 className="logo">
-  Vision<span>X</span> 
-</h2>
+          Vision<span>X</span> 
+        </h2>
 
-        <div 
-          className="login-container"
-          onMouseEnter={() => setShowDropdown(true)}
-          onMouseLeave={() => setShowDropdown(false)}
-        >
-          <button className="login-btn">Login ⌄</button>
+        {/*<div className="auth-container">*/}
 
-          {showDropdown && (
-            <div className="dropdown">
-              <p onClick={() => navigate('/login-user')}>Login as User</p>
-              <p onClick={() => navigate('/login')}>Login as Admin</p>
-            </div>
-          )}
+          {/* LOGIN DROPDOWN */}
+          {/*
+          <div
+            className="login-dropdown"
+            onMouseEnter={() => setShowDropdown(true)}
+            onMouseLeave={() => setShowDropdown(false)}
+          >
+            
+            <button 
+            className="login-btn"
+            onClick={() => navigate('/login')}
+            >
+              Login
+            </button>
+
+            {showDropdown && (
+              <div className="dropdown">
+                <p onClick={() => navigate('/login-user')}>Login as User</p> 
+                <p onClick={() => navigate('/login')}>Login as Admin</p>
+              </div>
+            )} 
+          </div> */}
+
+         {/*
+          <button 
+            className="login-btn"
+            onClick={() => navigate('/login')}
+          >
+            Login
+          </button>
+
+          <button
+            className="register-btn"
+            onClick={() => navigate('/register')}
+          >
+            Register
+          </button>
+
         </div>
+        */}
+
+        {user ? (
+          <div className="auth-container">
+
+            <span className="welcome-text">
+              Welcome, {user.username}
+            </span>
+
+            <button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </button>
+
+          </div>
+        ) : (
+          <div className="auth-container">
+
+            <button 
+              className="login-btn"
+              onClick={() => navigate('/login')}
+            >
+              Login
+            </button>
+
+            <button
+              className="register-btn"
+              onClick={() => navigate('/register')}
+            >
+              Register
+            </button>
+
+          </div>
+        )}
       </div>
 
       {/* Hero Section */}

@@ -1,6 +1,7 @@
 package com.spectacles.spectacles.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.spectacles.spectacles.model.User;
@@ -32,9 +33,18 @@ public class AuthController {
         return loggedUser;
     }
 
-    // 📝 REGISTER (optional)
+    // 📝 REGISTER 
     @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return service.register(user);
+    public ResponseEntity<?> register(@RequestBody User user) {
+
+        User savedUser = service.register(user);
+
+        if (savedUser == null) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Username already exists ❌");
+        }
+
+        return ResponseEntity.ok(savedUser);
     }
 }

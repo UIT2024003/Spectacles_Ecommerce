@@ -8,7 +8,16 @@ export default function ProductList() {
   const navigate = useNavigate();
 
   const addToCart = (product) => {
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      alert("Please login first ❌");
+      return;
+    }
+
+    const cartKey = `cart_${user.username}`;
+
+    let cart = JSON.parse(localStorage.getItem(cartKey)) || [];
 
     const existingIndex = cart.findIndex((item) => item.id === product.id);
 
@@ -21,7 +30,7 @@ export default function ProductList() {
       cart.push({ ...product, quantity: 1 });
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(cartKey, JSON.stringify(cart));
     alert("🛒 Added to cart");
   };
 
@@ -55,6 +64,9 @@ export default function ProductList() {
                 <img
                   src={`http://localhost:8080/${p.imageUrl}`}
                   alt=""
+                  loading="lazy"
+                  className="product-img"
+                  onLoad={(e) => (e.target.style.opacity = 1)}
                   onError={(e) =>
                     (e.target.src = "https://via.placeholder.com/150")
                   }

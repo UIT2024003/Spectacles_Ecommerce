@@ -25,7 +25,7 @@ public class UserServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    // ✅ TEST 1: SUCCESS LOGIN
+    // TEST 1: SUCCESS LOGIN
     @Test
     void testLoginSuccess() {
 
@@ -47,7 +47,7 @@ public class UserServiceTest {
         assertEquals("admin", result.getUsername());
     }
 
-    // ❌ TEST 2: WRONG PASSWORD
+    // TEST 2: WRONG PASSWORD
     @Test
     void testLoginWrongPassword() {
 
@@ -63,7 +63,7 @@ public class UserServiceTest {
         assertNull(result);
     }
 
-    // ❌ TEST 3: USER NOT FOUND
+    // TEST 3: USER NOT FOUND
     @Test
     void testLoginUserNotFound() {
         System.out.println("Running testLoginUserNotFound");
@@ -74,4 +74,37 @@ public class UserServiceTest {
 
         assertNull(result);
     }
+
+    // TEST 4: REGISTER USER
+    @Test
+    void testRegisterUser() {
+
+        System.out.println("Running testRegisterUser");
+
+        User user = new User();
+        user.setUsername("newuser");
+        user.setPassword("1234");
+
+        when(repo.save(user)).thenReturn(user);
+
+        User result = service.register(user);
+
+        assertNotNull(result);
+        assertEquals("newuser", result.getUsername());
+    }
+
+    // TEST 5: REGISTER CHECK FOR DUPLICATE USER (Duplicate users are NOT allowed)
+    @Test
+    void testRegisterDuplicateUser() {
+
+        User user = new User();
+        user.setUsername("admin");
+
+        when(repo.findByUsername("admin")).thenReturn(user);
+
+        User result = service.register(user);
+
+        assertNull(result); // or exception depending on your logic
+    }
+
 }

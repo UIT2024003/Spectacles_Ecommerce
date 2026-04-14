@@ -6,14 +6,24 @@ export default function Cart() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem("cart")) || [];
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      setCart([]);
+      return;
+    }
+
+    const cartKey = `cart_${user.username}`;
+    const data = JSON.parse(localStorage.getItem(cartKey)) || [];
+
     setCart(data);
   }, []);
 
   const removeItem = (id) => {
     const updated = cart.filter(item => item.id !== id);
     setCart(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
+    const user = JSON.parse(localStorage.getItem("user"));
+    const cartKey = `cart_${user.username}`;
+    localStorage.setItem(cartKey, JSON.stringify(updated));
   };
 
   const changeQty = (id, type) => {
@@ -26,7 +36,9 @@ export default function Cart() {
     });
 
     setCart(updated);
-    localStorage.setItem("cart", JSON.stringify(updated));
+    const user = JSON.parse(localStorage.getItem("user"));
+    const cartKey = `cart_${user.username}`;
+    localStorage.setItem(cartKey, JSON.stringify(updated));
   };
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
