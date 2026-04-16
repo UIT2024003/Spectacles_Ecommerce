@@ -27,12 +27,17 @@ public class ProductController {
         return productService.getAllProducts();
     }
 
-    // ✅ ADD PRODUCT
-    /* @PostMapping
-    public Product addProduct(@RequestBody Product product) {
+    // ✅ ADD PRODUCT (for testing / JSON requests without image)
+    // This endpoint is used for unit tests or simple API calls where image upload is not required.
+    // It ensures backward compatibility after introducing the file upload API.
+    @PostMapping
+    public Product addProductSimple(@RequestBody Product product) {
         return productService.addProduct(product);
-    } */
+    }
 
+    // ✅ ADD PRODUCT WITH IMAGE UPLOAD
+    // This endpoint handles multipart form-data requests, allowing admin to upload product images.
+    // The image is stored in the server directory, and only the filename is saved in the database.
     @PostMapping("/upload")
     public Product addProduct(
             @RequestParam("file") MultipartFile file,
@@ -95,4 +100,5 @@ public class ProductController {
     public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
+
 }
