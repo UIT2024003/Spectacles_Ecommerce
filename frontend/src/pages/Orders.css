@@ -1,0 +1,101 @@
+/* Page */
+.orders-page {
+  padding: 30px 50px;
+  min-height: 100vh;
+
+  background: linear-gradient(135deg, #5f2c82, #49a09d);
+}
+
+/* Back button */
+.back-container {
+  margin-bottom: 20px;
+}
+
+/*.back-btn {
+  background: transparent;
+  border: none;
+  color: #374151;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}*/
+
+.back-btn 
+{ 
+  background: rgba(255, 255, 255, 0.2);
+  color: white; 
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 16px; 
+  border-radius: 6px; 
+  cursor: pointer; 
+  margin-bottom: 20px; 
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Title */
+.orders-title {
+  font-size: 26px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* Grid */
+.orders-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+.order-header {
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #1f2937;
+}
+
+/* Body */
+.order-body p {
+  margin: 5px 0;
+  color: #4b5563;
+}
+
+/* Footer */
+.order-footer {
+  margin-top: 15px;
+}
+
+.status {
+  font-size: 13px;
+  background: #d1fae5;
+  color: #065f46;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Empty */
+.empty-orders {
+  text-align: center;
+  margin-top: 50px;
+  color: #6b7280;
+}

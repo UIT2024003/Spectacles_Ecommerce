@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./AddProduct.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddProduct() {
+  const navigate = useNavigate();
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
 
@@ -53,6 +55,12 @@ export default function AddProduct() {
 
   return (
     <div className="add-product-page">
+      <button 
+        className="back-btn"
+        onClick={() => navigate("/")}
+      >
+        ← Back to Home
+      </button>
       <div className="add-product-card">
         <h2>Add Spectacles </h2>
 

@@ -93,6 +93,13 @@ export default function Home() {
               Welcome, {user.username}
             </span>
 
+            <button
+              className="register-btn"
+              onClick={() => navigate("/orders")}
+            >
+              Orders 📦
+            </button>
+
             <button className="logout-btn" onClick={handleLogout}>
               Logout
             </button>

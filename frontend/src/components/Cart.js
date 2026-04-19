@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import './Cart.css';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
 
+  const navigate = useNavigate();
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
@@ -43,8 +46,29 @@ export default function Cart() {
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+  const placeOrder = async () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    await axios.post("http://localhost:8080/orders", {
+      username: user.username,
+      total: total
+    });
+
+    alert("Order placed successfully ✅");
+
+    // optional: clear cart
+    localStorage.removeItem(`cart_${user.username}`);
+    setCart([]);
+  };
+
   return (
     <div className="cart-page">
+      <button 
+        className="back-container"
+        onClick={() => navigate("/products")}
+      >
+        ← Back to Products
+      </button>
       <h2 className="cart-title">🛒 Your Cart</h2>
 
       {cart.length === 0 ? (
@@ -74,6 +98,12 @@ export default function Cart() {
           ))}
 
           <h3 className="cart-total">Total: ₹{total}</h3>
+          <button 
+            className="checkout-btn"
+            onClick={placeOrder}
+          >
+            Checkout 🧾
+          </button>
         </>
       )}
     </div>

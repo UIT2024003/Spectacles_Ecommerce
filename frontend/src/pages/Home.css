@@ -228,5 +228,5 @@
 }
 
 .logout-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #4b1f6f, #561b99);
 }

@@ -46,6 +46,13 @@ export default function ProductList() {
 
   return (
     <div style={{ padding: "20px" }}>
+      <button 
+        //className="home-btn"
+        className="button"
+        onClick={() => navigate("/")}
+      >
+        ← Back to Home
+      </button>
       <h2>Products 👓</h2>
 
       <button onClick={() => navigate("/cart")}>Go to Cart 🛒</button>
