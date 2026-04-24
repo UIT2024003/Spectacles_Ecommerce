@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools{
+        maven 'Maven'
+    }
+
     stages {
         stage('Clone') {
             steps {
@@ -12,7 +16,7 @@ pipeline {
         stage('Build and Test') {
             steps {
                 dir('backend') {
-                    sh 'mvn clean test'
+                    bat 'mvn clean test'
                 }
             }
         }
