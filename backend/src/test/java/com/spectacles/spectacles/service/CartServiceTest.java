@@ -31,7 +31,8 @@ class CartServiceTest {
     void testGetCart() {
         Cart c = new Cart();
         c.setUsername("user1");
-
+        
+        // Mock behavior → when repo is called, return predefined list
         when(repo.findByUsername("user1")).thenReturn(List.of(c));
 
         List<Cart> result = service.getCart("user1");
@@ -45,6 +46,7 @@ class CartServiceTest {
         Cart c = new Cart();
         c.setUsername("user1");
 
+        // Mock save operation
         when(repo.save(c)).thenReturn(c);
 
         Cart result = service.addItem(c);

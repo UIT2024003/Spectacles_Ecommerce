@@ -27,7 +27,7 @@ public class ProductServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    // ✅ TEST 1: GET ALL PRODUCTS
+    // TEST 1: GET ALL PRODUCTS
     @Test
     void testGetAllProducts() {
 
@@ -44,7 +44,7 @@ public class ProductServiceTest {
         assertEquals(2, result.size());
     }
 
-    // ✅ TEST 2: ADD PRODUCT
+    // TEST 2: ADD PRODUCT
     @Test
     void testAddProduct() {
 
@@ -60,7 +60,7 @@ public class ProductServiceTest {
         assertEquals("Specs", result.getName());
     }
 
-    // ✅ TEST 3: GET PRODUCT BY ID
+    // TEST 3: GET PRODUCT BY ID
     @Test
     void testGetProductById() {
 
@@ -75,7 +75,7 @@ public class ProductServiceTest {
         assertNotNull(result);
     }
 
-    // ✅ TEST 4: DELETE PRODUCT
+    // TEST 4: DELETE PRODUCT
     @Test
     void testDeleteProduct() {
 

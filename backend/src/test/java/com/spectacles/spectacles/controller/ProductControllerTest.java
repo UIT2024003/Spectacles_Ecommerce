@@ -31,7 +31,7 @@ public class ProductControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    // ✅ TEST GET ALL PRODUCTS
+    // TEST GET ALL PRODUCTS
     @Test
     void testGetAllProducts() throws Exception {
 
@@ -66,7 +66,7 @@ public class ProductControllerTest {
                 .andExpect(jsonPath("$[1].brand").value("Lenskart"));
     }
 
-    // ✅ TEST ADD PRODUCT
+    // TEST ADD PRODUCT
     @Test
     void testAddProduct() throws Exception {
 

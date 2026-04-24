@@ -27,7 +27,7 @@ public class AuthControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    // ✅ LOGIN SUCCESS
+    // LOGIN SUCCESS
     @Test
     void testLoginSuccess() throws Exception {
 
@@ -47,7 +47,7 @@ public class AuthControllerTest {
                 .andExpect(jsonPath("$.username").value("admin"));
     }
 
-    // ❌ LOGIN FAIL
+    // LOGIN FAIL
     @Test
     void testLoginFail() throws Exception {
 
