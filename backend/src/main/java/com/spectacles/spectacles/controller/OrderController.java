@@ -18,13 +18,13 @@ public class OrderController {
         this.service = service;
     }
 
-    // ✅ place order
+    // place order
     @PostMapping
     public Order placeOrder(@RequestBody Order order) {
         return service.placeOrder(order);
     }
 
-    // ✅ get user orders
+    // get user orders
     @GetMapping("/{username}")
     public List<Order> getOrders(@PathVariable String username) {
         return service.getOrders(username);

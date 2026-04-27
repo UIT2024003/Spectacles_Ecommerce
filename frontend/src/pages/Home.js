@@ -43,49 +43,6 @@ export default function Home() {
           Vision<span>X</span> 
         </h2>
 
-        {/*<div className="auth-container">*/}
-
-          {/* LOGIN DROPDOWN */}
-          {/*
-          <div
-            className="login-dropdown"
-            onMouseEnter={() => setShowDropdown(true)}
-            onMouseLeave={() => setShowDropdown(false)}
-          >
-            
-            <button 
-            className="login-btn"
-            onClick={() => navigate('/login')}
-            >
-              Login
-            </button>
-
-            {showDropdown && (
-              <div className="dropdown">
-                <p onClick={() => navigate('/login-user')}>Login as User</p> 
-                <p onClick={() => navigate('/login')}>Login as Admin</p>
-              </div>
-            )} 
-          </div> */}
-
-         {/*
-          <button 
-            className="login-btn"
-            onClick={() => navigate('/login')}
-          >
-            Login
-          </button>
-
-          <button
-            className="register-btn"
-            onClick={() => navigate('/register')}
-          >
-            Register
-          </button>
-
-        </div>
-        */}
-
         {user ? (
           <div className="auth-container">
 
@@ -93,12 +50,25 @@ export default function Home() {
               Welcome, {user.username}
             </span>
 
-            <button
-              className="register-btn"
-              onClick={() => navigate("/orders")}
-            >
-              Orders 📦
-            </button>
+            {/* Show ONLY for admin */}
+            {user.role === "ADMIN" && (
+              <button
+                className="register-btn"
+                onClick={() => navigate("/add")}
+              >
+                ➕ Add Product
+              </button>
+            )}
+
+            {/* Show ONLY for normal users */}
+            {user.role !== "ADMIN" && (
+              <button
+                className="register-btn"
+                onClick={() => navigate("/orders")}
+              >
+                Orders 📦
+              </button>
+            )}
 
             <button className="logout-btn" onClick={handleLogout}>
               Logout

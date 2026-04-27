@@ -15,7 +15,7 @@ public class AuthController {
     @Autowired
     private UserService service;
 
-    // 🔐 LOGIN
+    // LOGIN
     @PostMapping("/login")
     public User login(@RequestBody User user) {
 
@@ -33,7 +33,7 @@ public class AuthController {
         return loggedUser;
     }
 
-    // 📝 REGISTER 
+    // REGISTER 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
 

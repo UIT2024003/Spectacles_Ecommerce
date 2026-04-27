@@ -74,7 +74,7 @@ export default function AddProduct() {
           placeholder="Description"
           onChange={handleChange}
         />
-        <input name="stock" placeholder="Stock" onChange={handleChange} />
+        <input name="stock" placeholder="Quantity" onChange={handleChange} />
 
         <button onClick={handleSubmit}>Add Product</button>
       </div>

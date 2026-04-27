@@ -65,7 +65,7 @@ public class AuthControllerTest {
                 .andExpect(status().isOk());
     }
 
-    // ✅ REGISTER SUCCESS
+    // REGISTER SUCCESS
     @Test
     void testRegisterSuccess() throws Exception {
 

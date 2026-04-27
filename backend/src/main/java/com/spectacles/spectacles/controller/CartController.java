@@ -18,19 +18,19 @@ public class CartController {
         this.service = service;
     }
 
-    // ✅ GET cart for user
+    // GET cart for user
     @GetMapping("/{username}")
     public List<Cart> getCart(@PathVariable String username) {
         return service.getCart(username);
     }
 
-    // ✅ ADD item
+    // ADD item
     @PostMapping
     public Cart addItem(@RequestBody Cart cart) {
         return service.addItem(cart);
     }
 
-    // ✅ DELETE item
+    // DELETE item
     @DeleteMapping("/{id}")
     public void deleteItem(@PathVariable Long id) {
         service.removeItem(id);

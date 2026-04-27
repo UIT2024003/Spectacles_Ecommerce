@@ -138,7 +138,7 @@
   text-align: center;
   margin-top: 60px;
 
-  flex: 1; /* 👈 pushes footer down */
+  flex: 1; 
 }
 
 .hero h1 {
@@ -173,7 +173,7 @@
   gap: 20px;
   padding: 50px;
 
-  flex: 1; /* 👈 also helps push footer */
+  flex: 1; 
 }
 
 .feature-card {
@@ -206,7 +206,7 @@
   padding: 20px;
   background: rgba(0,0,0,0.2);
 
-  margin-top: auto; /* 👈 KEY FIX */
+  margin-top: auto; 
 }
 
 /* Welcome text */

@@ -6,6 +6,7 @@ import "./ProductList.css";
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const addToCart = (product) => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -47,7 +48,6 @@ export default function ProductList() {
   return (
     <div style={{ padding: "20px" }}>
       <button 
-        //className="home-btn"
         className="button"
         onClick={() => navigate("/")}
       >
@@ -55,7 +55,20 @@ export default function ProductList() {
       </button>
       <h2>Products 👓</h2>
 
-      <button onClick={() => navigate("/cart")}>Go to Cart 🛒</button>
+      {user?.role !== "ADMIN" && (
+        <button onClick={() => navigate("/cart")}>
+          Go to Cart 🛒
+        </button>
+      )}
+
+      {/* ADMIN ONLY BUTTON */}
+      {user?.role === "ADMIN" && (
+        <button
+          className="admin-btn"
+          onClick={() => navigate("/add")}>
+            ➕ Add Product
+        </button>
+      )}
 
       <br />
       <br />
@@ -66,7 +79,7 @@ export default function ProductList() {
         <div className="product-container">
           {products.map((p) => (
             <div key={p.id} className="product-card">
-              {/* 👇 Wrap content */}
+              {/* Wrap content */}
               <div>
                 <img
                   src={`http://localhost:8080/${p.imageUrl}`}
@@ -82,10 +95,13 @@ export default function ProductList() {
                 <p>{p.brand}</p>
                 <p>₹{p.price}</p>
               </div>
-
-              {/* 👇 Button stays at bottom */}
-              <button onClick={() => addToCart(p)}>Add to Cart</button>
-            </div>
+              
+              
+              {/* Button stays at bottom */}
+              {user?.role !== "ADMIN" && (
+                <button onClick={() => addToCart(p)}>Add to Cart</button>
+              )}
+          </div>
           ))}
         </div>
       )}
